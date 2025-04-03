@@ -11,6 +11,14 @@ app.get('*', (request, response) => {
 	response.send(status);;
 });
 
+// Serve static files from the 'dist/your-angular-app-name' directory
+app.use(express.static(path.join(__dirname, 'dist/carbon-tracking-system')));
+
+Handle all routes and return the index.html file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/carbon-tracking-system/browser/index.html'));
+});
+
 app.listen(PORT, () => {
 	console.log(`Server listening at http://localhost:${PORT}`);
 });
